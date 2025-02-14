@@ -9,24 +9,22 @@
 	const inputHandler = (event, input) => {
 		clearTimeout(timeout);
 		timeout = setTimeout(() => {
-			console.log(input.value);
 			saveHandler({name: nameInput.value, content: contentInput.value, id: note.id});
 		}, 500)
 	};
 	let nameInput, contentInput
 	onMount(() => {
-		console.log("loaded")
 		nameInput = document.getElementById("name");
 		contentInput = document.getElementById("content");
 		nameInput.addEventListener("keyup", (event) => {inputHandler(event, nameInput)})
-		contentInput.addEventListener("keyup", (event) => {console.log("listener fired"); inputHandler(event, contentInput)})
+		contentInput.addEventListener("keyup", (event) => {inputHandler(event, contentInput)})
 	})
 </script>
 <div class="cover">
 	<main>
 	<div>
 	<input type="text" id="name" value={note.name}>
-	<div on:click={closeHandler} class="close">
+	<div on:click={closeHandler({name: nameInput.value, content: contentInput.value, id: note.id})} class="close">
 		<Icon data={timesCircle} scale="3"/>
 	</div>
 	</div>
