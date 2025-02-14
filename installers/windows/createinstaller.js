@@ -14,7 +14,7 @@ function getInstallerConfig () {
   const outPath = path.join(rootPath, 'release-files')
 
   return Promise.resolve({
-    appDirectory: path.join(rootPath, '/release-builds/hotdogs-notebook-win32-ia32/'),
+    appDirectory: path.join(rootPath, '/release-builds/hotdogs-notebook-win32-x64/'),
     authors: 'Hotdog',
     noMsi: true,
     outputDirectory: path.join(outPath, 'windows-installer'),
