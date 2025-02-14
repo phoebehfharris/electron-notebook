@@ -10,7 +10,7 @@
 
 <style>
 	main {
-		background-color: #620024;
+		background-color: #620004;
 		color: white;
 		text-align: center;
 		overflow-wrap: break-word;

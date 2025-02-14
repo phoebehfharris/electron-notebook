@@ -11,13 +11,16 @@
     "dev": "rollup -c -w",
     "start": "electron .",
     "package-linux": "electron-packager . hotdogs-notebook --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/Logo.png --prune=true --out=release-builds",
-    "create-debian-installer": "electron-installer-debian --src release-builds/hotdogs-notebook-linux-x64/ --arch amd64 --config debian.json"
+    "package-windows": "electron-packager . hotdogs-notebook --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/Logo.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"hotdogs-notebook\"",
+    "create-debian-installer": "electron-installer-debian --src release-builds/hotdogs-notebook-linux-x64/ --arch amd64 --config debian.json",
+    "create-windows-installer": "node installers/windows/createinstaller.js"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
     "electron": "^12.0.5",
     "electron-packager": "^15.2.0",
+    "electron-winstaller": "^5.0.0",
     "rollup": "^2.3.4",
     "rollup-plugin-css-only": "^3.1.0",
     "rollup-plugin-livereload": "^2.0.0",
