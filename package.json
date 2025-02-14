@@ -1,5 +1,8 @@
 {
-  "name": "hotdog's notebook",
+  "name": "hotdogs-notebook",
+  "productName": "hotdogs-notebook",
+  "description": "a notebook app",
+  "productDescription": "a notebook app",
   "version": "1.0.0",
   "private": true,
   "main": "main.js",
@@ -7,7 +10,8 @@
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "electron .",
-    "package-linux": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/Logo.png --prune=true --out=release-builds"
+    "package-linux": "electron-packager . hotdogs-notebook --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/Logo.png --prune=true --out=release-builds",
+    "create-debian-installer": "electron-installer-debian --src release-builds/hotdogs-notebook-linux-x64/ --arch amd64 --config debian.json"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",

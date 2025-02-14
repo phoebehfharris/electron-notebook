@@ -4,35 +4,35 @@ const fs = require("fs");
 const ipc = ipcMain
 const userPath = path.join(app.getPath("userData"), "save.json");
 function requestSave() {
-	let data = {}
+	let data = []
 	try {
 		data = JSON.parse(fs.readFileSync(userPath))
 	} catch(error) {
-		data = {}
+		data = []
 	} finally {
-		console.log(data);
+		//console.log(data);
 		fs.writeFileSync(userPath, JSON.stringify(data))
 	}
 	return data
 }
 
 function saveData(data) {
-	console.log(data);
+	//console.log(data);
 	fs.writeFileSync(userPath, JSON.stringify(data.data))
-	console.log("Data Written");
+	//console.log("Data Written");
 }
 
 
 app.on("ready", () => {
 	ipc.on("requestSave", (event, message) => {
-		console.log("got an IPC message", message);
+		//console.log("got an IPC message", message);
 		const data = requestSave();
 		event.reply("data", data);
 	})
 	ipc.on("saveData", (event, message) => {
 		saveData(message);
 	});
-	console.log(app.getPath("userData"));	
+	//console.log(app.getPath("userData"));	
 	const mainWindow = new BrowserWindow({
 		webPreferences: {
 			preload: path.join(__dirname, './preload.js'),

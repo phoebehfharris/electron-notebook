@@ -11,7 +11,7 @@
 		timeout = setTimeout(() => {
 			console.log(input.value);
 			saveHandler({name: nameInput.value, content: contentInput.value, id: note.id});
-		}, 2000)
+		}, 500)
 	};
 	let nameInput, contentInput
 	onMount(() => {
