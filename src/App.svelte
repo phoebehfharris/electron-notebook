@@ -5,7 +5,12 @@
 	});
 	const openHandler = (card) => {currentNote = card;};
 	const closeHandler = (data) => {sendHandler(data); currentNote = null;};
-	const newHandler = () => {notes.push({name: "New Note", content: "", id: notes.length+1}); notes = notes; sendHandler();};
+const newHandler = () => {
+	const note = {name: "New Note", content: "", id: notes.length+1};
+	notes.push(note);
+	notes = notes; 
+	openHandler(note);
+	sendHandler();};
 	import Card from "./Card.svelte";
 	import Note from "./Note.svelte";
 	function sendHandler() {
