@@ -3,24 +3,26 @@
 	window.postMessage({
 		myTypeField: "requestSave",
 	});
-	const openHandler = (card) => {currentNote = card; console.log(currentNote);};
-	const closeHandler = () => {currentNote = null; console.log(2)};
-	const newHandler = () => {notes.push({name: "New Note", content: "", id: notes.length+1}); notes = notes};
+	const openHandler = (card) => {currentNote = card;};
+	const closeHandler = (data) => {sendHandler(data); currentNote = null;};
+	const newHandler = () => {notes.push({name: "New Note", content: "", id: notes.length+1}); notes = notes; sendHandler();};
 	import Card from "./Card.svelte";
 	import Note from "./Note.svelte";
-	function saveHandler(data) {
-		notes[notes.findIndex((note) => note.id == data.id)] = data
-		console.log(notes)
+	function sendHandler() {
 		window.postMessage({
 			myTypeField: "saveData",
 			data: notes
 		});
 	}
+	function saveHandler(data) {
+		notes[notes.findIndex((note) => note.id == data.id)] = data;
+		sendHandler();
+	}
 	let notes = [
 	]
 window.addEventListener("message", event => {
 	if (event.data.myTypeField === "data") {
-		notes = event.data.data; console.log("Data received")
+		notes = event.data.data; 
 	}
 });
 	
