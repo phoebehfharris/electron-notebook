@@ -48,7 +48,7 @@ app.on("ready", () => {
 		}
 	});
 	mainWindow.loadFile(path.join(__dirname, "public/index.html"));
-	mainWindow.webContents.openDevTools();
+	//mainWindow.webContents.openDevTools();
 });
 app.on("window-all-closed", () => {
 	app.quit();
